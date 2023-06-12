@@ -1,10 +1,10 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { getResponders } from "../utils";
+import { type getInteractionResponders } from "@elara-services/utils";
 
 export interface SlashCommand {
     command: SlashCommandBuilder;
     execute(
         interaction: ChatInputCommandInteraction,
-        responder: getResponders
+        responder: getInteractionResponders
     ): Promise<unknown>;
 }

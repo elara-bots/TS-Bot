@@ -1,7 +1,6 @@
 import { Events, Interaction } from "discord.js";
-import { getFilesList, Collection } from "@elara-services/utils";
+import { getFilesList, Collection, getInteractionResponder } from "@elara-services/utils";
 import { Event, SlashCommand } from "../interfaces";
-import { getResponder } from "../utils";
 import * as Commands from "../commands";
 
 export const interactionCreate: Event = {
@@ -14,7 +13,7 @@ export const interactionCreate: Event = {
             >;
             const command = commands.find((c) => c.command.name === i.commandName);
             if (command) {
-                return command.execute(i, getResponder(i));
+                return command.execute(i, getInteractionResponder(i));
             }
         }
     },
