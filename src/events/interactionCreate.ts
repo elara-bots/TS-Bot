@@ -1,9 +1,8 @@
 import { Events, Interaction } from "discord.js";
-import { Event } from "../interfaces/Event";
-import { SlashCommand } from "../interfaces/Command";
 import { getFilesList, Collection } from "@elara-services/utils";
-import * as Commands from "../commands";
+import { Event, SlashCommand } from "../interfaces";
 import { getResponder } from "../utils";
+import * as Commands from "../commands";
 
 export const interactionCreate: Event = {
     name: Events.InteractionCreate,
@@ -13,9 +12,7 @@ export const interactionCreate: Event = {
                 string,
                 SlashCommand
             >;
-            const command =
-                commands.get(i.commandName) ||
-                commands.find((c) => c.command.name === i.commandName);
+            const command = commands.find((c) => c.command.name === i.commandName);
             if (command) {
                 return command.execute(i, getResponder(i));
             }

@@ -1,5 +1,5 @@
 import { Client, Events } from "discord.js";
-import { Event } from "../interfaces/Event";
+import { Event } from "../interfaces";
 
 export const ready: Event = {
     name: Events.ClientReady,
