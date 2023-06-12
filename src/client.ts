@@ -2,7 +2,7 @@ import { config } from "dotenv";
 config({ path: `${process.cwd()}/.env` });
 
 import { Client, IntentsBitField, Options, ActivityType } from "discord.js";
-import { getFilesList } from "@elara-services/utils";
+import { getFilesList, Collection } from "@elara-services/utils";
 import * as events from "./events";
 import { Event } from "./interfaces/Event";
 
@@ -33,7 +33,7 @@ class BotClient extends Client {
                 ],
             },
         });
-        const eventsList = getFilesList(events) as Map<string, Event>;
+        const eventsList = getFilesList(events) as Collection<string, Event>;
         for (const event of eventsList.values()) {
             this[event.emit || "on"](event.name, (...args) => {
                 void event.execute(...args);

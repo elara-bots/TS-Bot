@@ -4,7 +4,8 @@
   "description": "Template for a TypeScript bot ",
   "main": "./dist/src/index.js",
   "scripts": {
-    "start": "npm run prettier:format && npm run build && npm run deploy && node ./dist/src/index.js",
+    "start": "npm run prettier:format && npm run build && npm run deploy && node ./dist/index.js",
+    "build": "tsc",
     "deploy": "ts-node ./src/scripts/deploy.ts",
     "lint": "eslint .",
     "prettier:format": "prettier --write src/**/*.ts",
@@ -32,7 +33,7 @@
   "dependencies": {
     "@elara-services/fetch": "^1.0.1",
     "@elara-services/packages": "^5.3.0",
-    "@elara-services/utils": "^1.0.1",
+    "@elara-services/utils": "^1.0.2",
     "discord.js": "^14.11.0"
   }
 }
