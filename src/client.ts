@@ -1,10 +1,10 @@
 import { config } from "dotenv";
 config({ path: `${process.cwd()}/.env` });
 
-import { Client, IntentsBitField, Options, ActivityType } from "discord.js";
-import { getFilesList, Collection } from "@elara-services/utils";
+import { loadEvents } from "@elara-services/botbuilder";
+import { getFilesList } from "@elara-services/utils";
+import { ActivityType, Client, IntentsBitField, Options } from "discord.js";
 import * as events from "./events";
-import { Event } from "./interfaces/Event";
 
 class BotClient extends Client {
     constructor() {
@@ -33,13 +33,7 @@ class BotClient extends Client {
                 ],
             },
         });
-        const eventsList = getFilesList(events) as Collection<string, Event>;
-        for (const event of eventsList.values()) {
-            this[event.emit || "on"](event.name, (...args) => {
-                void event.execute(...args);
-            });
-        }
-
+        loadEvents(this, getFilesList(events));
         this.login(process.env.TOKEN).catch(console.error);
     }
 }

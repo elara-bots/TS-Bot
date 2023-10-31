@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "discord.js";
-import { SlashCommand } from "../../interfaces";
+import type { SlashCommand } from "@elara-services/botbuilder";
 
 export const ping: SlashCommand = {
     command: new SlashCommandBuilder()

@@ -10,8 +10,8 @@ const manager = new ShardingManager(`./dist/client.js`, {
 manager.on("shardCreate", (shard: Shard) => {
     console.log(
         `[SHARDS]: [${((new Date().getTime() - time) / 1000).toFixed(
-            2
-        )}s] Shard (${shard.id}) online.`
+            2,
+        )}s] Shard (${shard.id}) online.`,
     );
 });
 
