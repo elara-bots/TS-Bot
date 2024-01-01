@@ -6,14 +6,21 @@ import { getFilesList } from "@elara-services/utils";
 import { ActivityType, Client, IntentsBitField, Options } from "discord.js";
 import * as events from "./events";
 
+declare module "discord.js" {
+    export interface Client {
+        prefix?: string;
+    }
+}
+
 class BotClient extends Client {
-    constructor() {
+    constructor(public prefix?: string) {
         super({
             intents: [
                 IntentsBitField.Flags.Guilds,
                 IntentsBitField.Flags.GuildMembers,
                 IntentsBitField.Flags.GuildMessages,
                 IntentsBitField.Flags.GuildPresences,
+                IntentsBitField.Flags.MessageContent,
             ],
             rest: {
                 offset: 100,
@@ -37,4 +44,4 @@ class BotClient extends Client {
         this.login(process.env.TOKEN).catch(console.error);
     }
 }
-export default new BotClient();
+export default new BotClient(process.env.PREFIX);

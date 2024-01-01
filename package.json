@@ -5,6 +5,7 @@
   "main": "./dist/src/index.js",
   "scripts": {
     "start": "npm run pf && npm run build && npm run deploy && node ./dist/index.js",
+    "ds": "npm run build && node ./dist/index.js",
     "build": "tsc",
     "deploy": "ts-node ./src/scripts/deploy.ts",
     "lint": "eslint .",
@@ -32,10 +33,10 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@elara-services/botbuilder": "^1.0.5",
+    "@elara-services/botbuilder": "^2.1.4",
     "@elara-services/fetch": "^2.0.2",
     "@elara-services/packages": "^6.0.8",
-    "@elara-services/utils": "^1.2.38",
+    "@elara-services/utils": "^1.3.7",
     "discord.js": "^14.13.0"
   }
 }

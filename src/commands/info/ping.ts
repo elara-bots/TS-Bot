@@ -1,13 +1,26 @@
-import { SlashCommandBuilder } from "discord.js";
 import type { SlashCommand } from "@elara-services/botbuilder";
+import { comment } from "@elara-services/utils";
+import { Colors, SlashCommandBuilder, SnowflakeUtil } from "discord.js";
 
 export const ping: SlashCommand = {
     command: new SlashCommandBuilder()
         .setName(`ping`)
         .setDescription(`View the latency for the bot`),
+    defer: {
+        silent: true,
+    },
     async execute(i, r) {
-        const time = Date.now();
-        await r.defer({ ephemeral: true });
-        return r.edit(`🏓Pong! \`${Date.now() - time}ms\``);
+        return r
+            .edit({
+                embeds: [
+                    comment(
+                        `🏓Pong! \`${
+                            Date.now() - SnowflakeUtil.timestampFrom(i.id)
+                        }ms\``,
+                        Colors.Aqua,
+                    ),
+                ],
+            })
+            .catch(() => null);
     },
 };
