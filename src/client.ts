@@ -2,9 +2,12 @@ import { config } from "dotenv";
 config({ path: `${process.cwd()}/.env` });
 
 import { loadEvents } from "@elara-services/botbuilder";
-import { getFilesList } from "@elara-services/utils";
+import { getFilesList, times } from "@elara-services/utils";
 import { ActivityType, Client, IntentsBitField, Options } from "discord.js";
 import * as events from "./events";
+if (process.env.timeZone) {
+    times.timeZone = process.env.timeZone;
+}
 
 declare module "discord.js" {
     export interface Client {
@@ -18,8 +21,8 @@ class BotClient extends Client {
             intents: [
                 IntentsBitField.Flags.Guilds,
                 IntentsBitField.Flags.GuildMembers,
-                IntentsBitField.Flags.GuildMessages,
                 IntentsBitField.Flags.GuildPresences,
+                IntentsBitField.Flags.GuildMessages,
                 IntentsBitField.Flags.MessageContent,
             ],
             rest: {

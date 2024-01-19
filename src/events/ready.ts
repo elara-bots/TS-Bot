@@ -1,11 +1,12 @@
 import { Events, type Event } from "@elara-services/botbuilder";
+import { log } from "@elara-services/utils";
 import { ActivityType, Client, PresenceData } from "discord.js";
 
 export const ready: Event = {
     enabled: true,
     name: Events.ClientReady,
     async execute(client: Client<true>) {
-        console.log(
+        log(
             `[CLIENT]: ${client.user.tag} is now ready in ${client.guilds.cache.size} servers.`,
         );
         const obj: PresenceData = {
