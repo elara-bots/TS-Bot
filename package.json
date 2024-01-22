@@ -33,10 +33,10 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@elara-services/botbuilder": "^2.1.5",
+    "@elara-services/botbuilder": "^2.1.6",
     "@elara-services/fetch": "^2.0.2",
     "@elara-services/packages": "^6.0.9",
-    "@elara-services/utils": "^1.3.12",
+    "@elara-services/utils": "^1.3.13",
     "discord.js": "^14.14.1"
   }
 }
