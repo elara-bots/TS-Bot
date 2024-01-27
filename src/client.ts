@@ -5,6 +5,7 @@ import { loadEvents } from "@elara-services/botbuilder";
 import { getFilesList, times } from "@elara-services/utils";
 import { ActivityType, Client, IntentsBitField, Options } from "discord.js";
 import * as events from "./events";
+import { checkIfDeploy } from "./scripts/checks";
 if (process.env.timeZone) {
     times.timeZone = process.env.timeZone;
 }
@@ -43,8 +44,10 @@ class BotClient extends Client {
                 ],
             },
         });
-        loadEvents(this, getFilesList(events));
-        this.login(process.env.TOKEN).catch(console.error);
+        if (!checkIfDeploy()) {
+            loadEvents(this, getFilesList(events));
+            this.login(process.env.TOKEN).catch(console.error);
+        }
     }
 }
 export default new BotClient(process.env.PREFIX);
