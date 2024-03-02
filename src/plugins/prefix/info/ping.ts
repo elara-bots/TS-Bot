@@ -1,5 +1,5 @@
 import { type PrefixCommand } from "@elara-services/botbuilder";
-import { comment } from "@elara-services/utils";
+import { embedComment } from "@elara-services/utils";
 import { Colors } from "discord.js";
 
 export const ping: PrefixCommand = {
@@ -9,11 +9,9 @@ export const ping: PrefixCommand = {
         const d = Date.now();
         const msg = await r.loading();
         return msg
-            ?.edit({
-                embeds: [
-                    comment(`🏓 Pong! \`${Date.now() - d}ms\``, Colors.Aqua),
-                ],
-            })
+            ?.edit(
+                embedComment(`🏓 Pong! \`${Date.now() - d}ms\``, Colors.Aqua),
+            )
             .catch(() => null);
     },
 };

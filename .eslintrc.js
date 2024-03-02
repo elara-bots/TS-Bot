@@ -18,10 +18,18 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "@typescript-eslint/no-empty-function": 0,
-        "@typescript-eslint/ban-ts-comment": 0,
+        semi: ["error", "always"],
+        curly: ["error", "all"],
+        "@typescript-eslint/no-var-requires": 0,
+        "no-warning-comments": "warn",
+        "@typescript-eslint/no-unused-vars": "error",
+        "object-shorthand": "error",
+        "@typescript-eslint/consistent-type-imports": "error",
+        "@typescript-eslint/no-explicit-any": 0,
+        "no-async-promise-executor": 0,
+        "@typescript-eslint/ban-ts-comment": 0
     },
     "ignorePatterns": [
         "dist/*"
     ]
-}
+};

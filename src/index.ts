@@ -1,7 +1,7 @@
-import { config } from "dotenv";
-config({ path: `${process.cwd()}/.env` });
-import { Shard, ShardingManager } from "discord.js";
-import { times, log } from "@elara-services/utils";
+import "dotenv/config";
+
+import { log, times } from "@elara-services/utils";
+import { ShardingManager } from "discord.js";
 if (process.env.timeZone) {
     times.timeZone = process.env.timeZone;
 }
@@ -11,7 +11,7 @@ const manager = new ShardingManager(`./dist/client.js`, {
     totalShards: "auto",
 });
 
-manager.on("shardCreate", (shard: Shard) => {
+manager.on("shardCreate", (shard) => {
     log(
         `[SHARDS]: [${((new Date().getTime() - time) / 1000).toFixed(
             2,

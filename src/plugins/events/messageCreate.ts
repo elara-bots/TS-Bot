@@ -1,14 +1,13 @@
 import {
     PrefixCommand,
+    createEvent,
     handleMessageCommand,
-    type Event,
 } from "@elara-services/botbuilder";
 import { getFilesList } from "@elara-services/utils";
 import { Events, type Message } from "discord.js";
-import * as Commands from "../prefix-commands";
+import * as Commands from "../prefix";
 
-export const messageCreate: Event = {
-    enabled: true,
+export const messageCreate = createEvent({
     name: Events.MessageCreate,
     async execute(message: Message) {
         if (message.client.prefix) {
@@ -19,4 +18,4 @@ export const messageCreate: Event = {
             );
         }
     },
-};
+});

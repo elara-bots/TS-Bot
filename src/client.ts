@@ -1,10 +1,15 @@
-import { config } from "dotenv";
-config({ path: `${process.cwd()}/.env` });
+import "dotenv/config";
 
-import { loadEvents } from "@elara-services/botbuilder";
+import { getPresence, loadEvents } from "@elara-services/botbuilder";
 import { getFilesList, times } from "@elara-services/utils";
-import { ActivityType, Client, IntentsBitField, Options } from "discord.js";
-import * as events from "./events";
+import {
+    Client,
+    IntentsBitField,
+    Options,
+    type ActivityType,
+    type PresenceData,
+} from "discord.js";
+import * as events from "./plugins/events";
 import { checkIfDeploy } from "./scripts/checks";
 if (process.env.timeZone) {
     times.timeZone = process.env.timeZone;
@@ -34,15 +39,12 @@ class BotClient extends Client {
                     maxSize: 200,
                 },
             }),
-            presence: {
-                status: "dnd",
-                activities: [
-                    {
-                        name: "Just starting up",
-                        type: ActivityType.Listening,
-                    },
-                ],
-            },
+            presence: getPresence({
+                status: process.env.STATUS as PresenceData["status"],
+                name: process.env.ACTIVITY_NAME,
+                type: process.env.ACTIVITY_TYPE as keyof typeof ActivityType,
+                stream_url: process.env.STREAM_URL,
+            }),
         });
         if (!checkIfDeploy()) {
             loadEvents(this, getFilesList(events));
