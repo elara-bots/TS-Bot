@@ -25,7 +25,7 @@ module.exports = {
         "@typescript-eslint/no-unused-vars": "error",
         "object-shorthand": "error",
         "@typescript-eslint/consistent-type-imports": "error",
-        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-explicit-any": "error",
         "no-async-promise-executor": 0,
         "@typescript-eslint/ban-ts-comment": 0
     },

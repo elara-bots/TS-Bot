@@ -20,13 +20,7 @@ export const ping = buildCommand<MessageContextMenuCommand>({
         if (!i.inCachedGuild()) {
             return;
         }
-        return r
-            .edit(
-                embedComment(
-                    `🏓 Pong! \`${Date.now() - SnowflakeUtil.timestampFrom(i.id)}ms\``,
-                    Colors.Aqua,
-                ),
-            )
-            .catch(() => null);
+        const ms = Date.now() - SnowflakeUtil.timestampFrom(i.id);
+        return r.edit(embedComment(`🏓 Pong! \`${ms}ms\``, Colors.Aqua));
     },
 });

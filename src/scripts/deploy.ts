@@ -8,5 +8,6 @@ import * as context from "../plugins/context";
 deployCommands(
     process.env.TOKEN as string,
     getFilesList<SlashCommand>(Commands),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getFilesList<any>(context),
 );

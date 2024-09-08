@@ -1,5 +1,5 @@
 import { buildCommand, type SlashCommand } from "@elara-services/botbuilder";
-import { embedComment } from "@elara-services/utils";
+import { embedComment, noop } from "@elara-services/utils";
 import { Colors, SlashCommandBuilder, SnowflakeUtil } from "discord.js";
 
 export const ping = buildCommand<SlashCommand>({
@@ -17,6 +17,6 @@ export const ping = buildCommand<SlashCommand>({
                     Colors.Aqua,
                 ),
             )
-            .catch(() => null);
+            .catch(noop);
     },
 });

@@ -1,5 +1,5 @@
 import {
-    PrefixCommand,
+    type PrefixCommand,
     createEvent,
     handleMessageCommand,
 } from "@elara-services/botbuilder";

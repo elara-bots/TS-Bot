@@ -11,6 +11,7 @@ import {
 } from "discord.js";
 import * as events from "./plugins/events";
 import { checkIfDeploy } from "./scripts/checks";
+
 if (process.env.timeZone) {
     times.timeZone = process.env.timeZone;
 }
