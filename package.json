@@ -41,7 +41,7 @@
     "@elara-services/fetch": "2.0.2",
     "@elara-services/packages": "6.1.0",
     "@elara-services/utils": "2.2.7",
-    "discord.js": "14.16.1",
+    "discord.js": "14.17.3",
     "readline-sync": "1.4.10"
   }
 }
