@@ -1,7 +1,7 @@
 import "dotenv/config";
 
 import { getPresence, loadEvents } from "@elara-services/botbuilder";
-import { getFilesList, times } from "@elara-services/utils";
+import { getFilesList } from "@elara-services/utils";
 import {
     Client,
     IntentsBitField,
@@ -11,10 +11,6 @@ import {
 } from "discord.js";
 import * as events from "./plugins/events";
 import { checkIfDeploy } from "./scripts/checks";
-
-if (process.env.timeZone) {
-    times.timeZone = process.env.timeZone;
-}
 
 declare module "discord.js" {
     export interface Client {
@@ -32,13 +28,9 @@ class BotClient extends Client {
                 IntentsBitField.Flags.GuildMessages,
                 IntentsBitField.Flags.MessageContent,
             ],
-            rest: {
-                offset: 100,
-            },
+            rest: { offset: 100 },
             makeCache: Options.cacheWithLimits({
-                MessageManager: {
-                    maxSize: 200,
-                },
+                MessageManager: { maxSize: 200 },
             }),
             presence: getPresence({
                 status: process.env.STATUS as PresenceData["status"],

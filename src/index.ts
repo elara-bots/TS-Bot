@@ -1,11 +1,7 @@
 import "dotenv/config";
 
-import { log, times } from "@elara-services/utils";
+import { log } from "@elara-services/utils";
 import { ShardingManager } from "discord.js";
-
-if (process.env.timeZone) {
-    times.timeZone = process.env.timeZone;
-}
 
 const time = Date.now();
 const manager = new ShardingManager(`./dist/client.js`, {

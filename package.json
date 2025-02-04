@@ -1,16 +1,17 @@
 {
   "name": "typescriptbot",
   "version": "1.0.0",
-  "description": "Template for a TypeScript bot ",
+  "description": "Template for a TypeScript bot",
   "main": "./dist/src/index.js",
   "scripts": {
     "start": "npm run pf && npm run build && npm run deploy && node ./dist/index.js",
     "ds": "npm run build && node ./dist/index.js",
-    "build": "tsc",
+    "build": "rm -rf dist && rm -rf docs && tsc",
     "deploy": "ts-node ./src/scripts/deploy.ts",
     "lint": "eslint .",
     "pf": "prettier --write src/**/*.ts",
-    "pc": "prettier --check src/**/*.ts"
+    "pc": "prettier --check src/**/*.ts",
+    "fix": "npm run lint && npm run pf"
   },
   "keywords": [
     "typescript",
@@ -22,21 +23,21 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.5",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
-    "dotenv": "^16.4.5",
-    "eslint": "^8.57.0",
-    "nodemon": "^3.1.0",
-    "prettier": "^3.2.5",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "dotenv": "^16.4.7",
+    "eslint": "^8.52.0",
+    "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@elara-services/botbuilder": "^4.1.2",
+    "@discordjs/builders": "^1.9.0",
+    "@elara-services/botbuilder": "^4.2.1",
     "@elara-services/fetch": "2.0.2",
-    "@elara-services/packages": "6.1.0",
-    "@elara-services/utils": "1.7.0",
+    "@elara-services/packages": "^6.1.0",
+    "@elara-services/utils": "^2.2.7",
     "discord.js": "14.16.1"
   }
 }
