@@ -40,7 +40,7 @@
     "@elara-services/botbuilder": "4.2.1",
     "@elara-services/fetch": "2.0.2",
     "@elara-services/packages": "6.1.0",
-    "@elara-services/utils": "2.2.7",
+    "@elara-services/utils": "2.2.8",
     "discord.js": "14.16.1",
     "readline-sync": "1.4.10"
   }
